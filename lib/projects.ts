@@ -11,9 +11,30 @@ export interface Project {
   featured: boolean;
   color: string;
   aspect: "landscape" | "portrait";
+  images?: { src: string; alt: string; width: number; height: number }[];
 }
 
 export const projects: Project[] = [
+  {
+    slug: "fatherhood-101",
+    title: "Fatherhood 101",
+    category: "Campaign Branding",
+    year: "2024",
+    client: "PragerU",
+    role: "Creative Director",
+    tools: "Photoshop, Illustrator, After Effects",
+    description: "Campaign branding for a Father's Day educational series.",
+    overview:
+      "Fatherhood 101 is a campaign celebrating fathers and the irreplaceable role they play in family and society. The visual identity needed to feel warm, authoritative, and shareable — built for digital-first distribution across social, email, and web.",
+    featured: true,
+    color: "#990100",
+    aspect: "landscape",
+    images: [
+      { src: "/campaigns/fatherhood-101/spotlight.png", alt: "Fatherhood 101 Spotlight", width: 1920, height: 1080 },
+      { src: "/campaigns/fatherhood-101/wisepop.jpg", alt: "Fatherhood 101 Wisepop", width: 1080, height: 1080 },
+      { src: "/campaigns/fatherhood-101/quiz-thumbnail.jpg", alt: "Great American Fathers Quiz Thumbnail", width: 1920, height: 1080 },
+    ],
+  },
   {
     slug: "arcform-identity",
     title: "Arcform Identity",

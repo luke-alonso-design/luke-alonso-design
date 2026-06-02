@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import { Project } from "@/lib/projects";
 
@@ -35,6 +36,16 @@ export default function CaseStudyClient({
         className="relative flex items-end px-6 md:px-10 pb-16 pt-32 min-h-[60vh]"
         style={{ background: project.color }}
       >
+        {project.images?.[0] && (
+          <Image
+            src={project.images[0].src}
+            alt={project.images[0].alt}
+            fill
+            className="object-cover opacity-40"
+            priority
+            sizes="100vw"
+          />
+        )}
         <div
           className="absolute inset-0"
           style={{
@@ -107,6 +118,58 @@ export default function CaseStudyClient({
           {project.overview}
         </p>
       </motion.section>
+
+      {/* Real images gallery — only if project has images */}
+      {project.images && project.images.length > 0 && (
+        <motion.section
+          variants={reveal}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="px-6 md:px-10 pb-16"
+        >
+          <div className="max-w-7xl mx-auto">
+            <h2
+              className="font-heading text-dark mb-8"
+              style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
+            >
+              FATHERHOOD 101
+            </h2>
+            <div className="grid grid-cols-1 gap-4">
+              {/* First image full width */}
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/9" }}>
+                <Image
+                  src={project.images[0].src}
+                  alt={project.images[0].alt}
+                  fill
+                  className="object-cover"
+                  sizes="100vw"
+                />
+              </div>
+              {/* Remaining images side by side */}
+              {project.images.length > 1 && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {project.images.slice(1).map((img) => (
+                    <div
+                      key={img.src}
+                      className="relative w-full overflow-hidden"
+                      style={{ aspectRatio: img.width / img.height }}
+                    >
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </motion.section>
+      )}
 
       {/* Process */}
       <section className="py-16 px-6 md:px-10 border-t border-blue/10">

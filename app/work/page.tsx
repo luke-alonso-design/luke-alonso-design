@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { projects } from "@/lib/projects";
 import ProjectCard from "@/components/ProjectCard";
 
-const categories = ["All", "Branding", "UI/UX", "Motion", "Print"];
+const categories = ["All", "Campaign Branding", "Branding", "UI/UX", "Motion", "Print"];
 
 export default function WorkPage() {
   const [active, setActive] = useState("All");

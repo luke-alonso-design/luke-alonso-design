@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Project } from "@/lib/projects";
 
@@ -10,6 +11,8 @@ interface Props {
 }
 
 export default function ProjectCard({ project, className = "" }: Props) {
+  const heroImage = project.images?.[0];
+
   return (
     <motion.div
       whileHover={{ scale: 1.02 }}
@@ -18,18 +21,28 @@ export default function ProjectCard({ project, className = "" }: Props) {
       style={{ aspectRatio: project.aspect === "portrait" ? "3/4" : "16/9" }}
     >
       <Link href={`/work/${project.slug}`} className="block w-full h-full">
-        {/* Placeholder image */}
-        <div
-          className="w-full h-full flex items-end p-6"
-          style={{ background: project.color }}
-        >
-          <span
-            className="font-heading text-cream/20 text-5xl leading-none"
-            style={{ letterSpacing: "0.05em" }}
+        {/* Image or color placeholder */}
+        {heroImage ? (
+          <Image
+            src={heroImage.src}
+            alt={heroImage.alt}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        ) : (
+          <div
+            className="w-full h-full flex items-end p-6"
+            style={{ background: project.color }}
           >
-            {project.title.toUpperCase()}
-          </span>
-        </div>
+            <span
+              className="font-heading text-cream/20 text-5xl leading-none"
+              style={{ letterSpacing: "0.05em" }}
+            >
+              {project.title.toUpperCase()}
+            </span>
+          </div>
+        )}
 
         {/* Hover overlay */}
         <div className="card-overlay">
