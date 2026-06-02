@@ -9,8 +9,8 @@ export default function Home() {
         <Image
           src="/header.png"
           alt="Luke Alonso"
-          width={6240}
-          height={3512}
+          width={6758}
+          height={3804}
           className="w-full h-auto block"
           priority
         />
