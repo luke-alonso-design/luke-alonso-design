@@ -3,25 +3,102 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-blue: #2E4C8C;
+  --color-cream: #FFF3E1;
+  --color-red: #FA2D1A;
+  --color-dark: #0F1A2E;
+  --color-white: #FFFFFF;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-cream);
+  color: var(--color-dark);
+  cursor: none;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+@media (hover: none) {
+  body { cursor: auto; }
+}
+
+/* Custom cursor */
+.cursor-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--color-red);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease;
+}
+
+.cursor-dot.hovering {
+  width: 24px;
+  height: 24px;
+}
+
+/* Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 18s linear infinite;
+  will-change: transform;
+}
+
+/* Project card hover overlay */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--color-red);
+  transform: translateY(100%);
+  transition: transform 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+}
+
+.project-card:hover .card-overlay {
+  transform: translateY(0);
+}
+
+.project-card:hover {
+  outline: 2px solid var(--color-blue);
+  outline-offset: -2px;
+}
+
+/* Input underline style */
+.input-underline {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-cream);
+  color: var(--color-cream);
+  width: 100%;
+  padding: 0.75rem 0;
+  font-size: 1rem;
+  outline: none;
+}
+
+.input-underline::placeholder {
+  color: rgba(255, 243, 225, 0.45);
+}
+
+.input-underline:focus {
+  border-bottom-color: var(--color-red);
 }
