@@ -129,67 +129,54 @@ export default function CaseStudyClient({
             >
               FATHERHOOD 101
             </h2>
-            <div className="grid grid-cols-1 gap-4">
-              {/* First image full width */}
-              <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/9" }}>
+            {/* 3-col grid: Spotlight spans 2, Square fills 1 | Vertical fills 1, Quiz spans 2 */}
+            <div className="grid grid-cols-3 gap-3">
+              {/* Row 1: Spotlight (2/3) + Square (1/3) */}
+              <div className="col-span-2 relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
                 <Image
                   src={project.images[0].src}
                   alt={project.images[0].alt}
                   fill
                   className="object-cover"
-                  sizes="100vw"
+                  sizes="66vw"
                 />
               </div>
-              {/* Square + Vertical side by side */}
               {project.images[1] && (
-                <div className="grid grid-cols-2 gap-4 items-start">
-                  <div
-                    className="relative w-full overflow-hidden"
-                    style={{ aspectRatio: `${project.images[1].width} / ${project.images[1].height}` }}
-                  >
-                    <Image
-                      src={project.images[1].src}
-                      alt={project.images[1].alt}
-                      fill
-                      className="object-cover"
-                      sizes="50vw"
-                    />
-                  </div>
-                  {project.images[2] && (
-                    <div
-                      className="relative w-full overflow-hidden"
-                      style={{ aspectRatio: `${project.images[2].width} / ${project.images[2].height}` }}
-                    >
-                      <Image
-                        src={project.images[2].src}
-                        alt={project.images[2].alt}
-                        fill
-                        className="object-cover"
-                        sizes="50vw"
-                      />
-                    </div>
-                  )}
+                <div className="col-span-1 relative overflow-hidden" style={{ aspectRatio: "1/1" }}>
+                  <Image
+                    src={project.images[1].src}
+                    alt={project.images[1].alt}
+                    fill
+                    className="object-cover"
+                    sizes="33vw"
+                  />
                 </div>
               )}
-              {/* Fourth image with label */}
+
+              {/* Row 2: Vertical (1/3) + Quiz label + image (2/3) */}
+              {project.images[2] && (
+                <div className="col-span-1 relative overflow-hidden" style={{ aspectRatio: "9/16" }}>
+                  <Image
+                    src={project.images[2].src}
+                    alt={project.images[2].alt}
+                    fill
+                    className="object-cover"
+                    sizes="33vw"
+                  />
+                </div>
+              )}
               {project.images[3] && (
-                <div>
-                  <h3
-                    className="font-heading text-dark mb-4 mt-4"
-                    style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)" }}
-                  >
+                <div className="col-span-2 flex flex-col gap-2">
+                  <p className="font-heading text-dark text-xl tracking-widest">
                     SUPPLEMENTARY QUIZ
-                  </h3>
-                  <div
-                    className="relative w-full overflow-hidden"
-                    style={{ aspectRatio: `${project.images[3].width} / ${project.images[3].height}` }}
-                  >
+                  </p>
+                  <div className="relative overflow-hidden flex-1" style={{ aspectRatio: "16/9" }}>
                     <Image
                       src={project.images[3].src}
                       alt={project.images[3].alt}
                       fill
                       className="object-cover"
-                      sizes="100vw"
+                      sizes="66vw"
                     />
                   </div>
                 </div>
