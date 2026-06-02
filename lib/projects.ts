@@ -26,7 +26,7 @@ export const projects: Project[] = [
     overview:
       "Arcform needed a visual language that matched their ethos — raw, structural, intentional. The identity centers on a geometric letterform that doubles as a spatial diagram, deployed across signage, print collateral, and digital touchpoints.",
     featured: true,
-    color: "#2E4C8C",
+    color: "#990100",
     aspect: "landscape",
   },
   {
@@ -41,7 +41,7 @@ export const projects: Project[] = [
     overview:
       "Drivers needed instant answers — charge status, cost, time remaining — without cognitive overhead. We rebuilt the information architecture from the ground up, introducing a glanceable dashboard with adaptive typography and contextual micro-animations.",
     featured: true,
-    color: "#0F1A2E",
+    color: "#1A0A00",
     aspect: "landscape",
   },
   {
@@ -56,7 +56,7 @@ export const projects: Project[] = [
     overview:
       "Meridian Records wanted a visual signature that felt like sound — kinetic, layered, alive. We developed a generative motion system built from waveform geometries that scales across social, broadcast, and streaming contexts.",
     featured: true,
-    color: "#FA2D1A",
+    color: "#990100",
     aspect: "portrait",
   },
   {
@@ -71,7 +71,7 @@ export const projects: Project[] = [
     overview:
       "Hearth is a magazine about slow living. Every spread was designed to breathe — generous white space, oversized pull quotes, and a careful interplay between image and type that rewards reading at pace.",
     featured: false,
-    color: "#2E4C8C",
+    color: "#990100",
     aspect: "portrait",
   },
   {
@@ -86,7 +86,7 @@ export const projects: Project[] = [
     overview:
       "The rebrand stripped away years of accumulated visual noise to reveal a core that was always there: restraint as strength. A monochrome palette, a custom wordmark, and a flexible grid system that works from business cards to billboards.",
     featured: false,
-    color: "#0F1A2E",
+    color: "#1A0A00",
     aspect: "landscape",
   },
   {
@@ -101,7 +101,7 @@ export const projects: Project[] = [
     overview:
       "A studio site that functions as a sandbox — each project page uses a distinct layout language while remaining connected by a consistent interaction model. Built in Webflow with custom JS for cursor choreography and scroll-driven reveals.",
     featured: false,
-    color: "#FA2D1A",
+    color: "#990100",
     aspect: "landscape",
   },
   {
@@ -116,7 +116,7 @@ export const projects: Project[] = [
     overview:
       "A 90-second brand film that translates a complex environmental mission into something felt, not just understood. Layered hand-drawn elements animate over field recordings, grounded in a muted but purposeful palette.",
     featured: false,
-    color: "#2E4C8C",
+    color: "#990100",
     aspect: "portrait",
   },
   {
@@ -131,7 +131,7 @@ export const projects: Project[] = [
     overview:
       "Tower is a display typeface built for scale — it only makes sense at 96pt and above. The letterforms are constructed from a strict grid of thick verticals and razor-thin horizontals, creating extreme optical contrast that rewards the eye.",
     featured: false,
-    color: "#0F1A2E",
+    color: "#1A0A00",
     aspect: "landscape",
   },
 ];

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import HeroSection from "@/components/HeroSection";
 import Marquee from "@/components/Marquee";
 import FeaturedWork from "@/components/FeaturedWork";
 
@@ -16,7 +15,6 @@ export default function Home() {
           priority
         />
       </div>
-      <HeroSection />
       <Marquee />
       <FeaturedWork />
     </>
