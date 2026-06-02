@@ -25,7 +25,7 @@ export const projects: Project[] = [
     tools: "Photoshop, Illustrator, After Effects",
     description: "Campaign branding for a Father's Day educational series.",
     overview:
-      "Fatherhood 101 is a campaign celebrating fathers and the irreplaceable role they play in family and society. The visual identity needed to feel warm, authoritative, and shareable — built for digital-first distribution across social, email, and web.",
+      "Fatherhood 101 is a course featuring 8 of PragerU's most powerful videos on fatherhood, masculinity, marriage, parenting, and family life. The visual identity needed to feel warm and family-oriented — built for distribution across social, email, and web.",
     featured: true,
     color: "#990100",
     aspect: "landscape",

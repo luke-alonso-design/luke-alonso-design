@@ -30,7 +30,7 @@ export default function FeaturedWork() {
             className="font-heading text-blue leading-none mb-2"
             style={{ fontSize: "clamp(3rem, 7vw, 6rem)" }}
           >
-            SELECTED WORK
+            CAMPAIGN WORK
           </h2>
           <p className="font-subtitle italic text-dark/50 text-xl">
             A curated selection of recent projects

@@ -23,12 +23,6 @@ export default function CaseStudyClient({
     { num: "03", title: "Design & Refinement", body: "Iterative rounds of high-fidelity design, prototyping, and stress-testing across formats, sizes, and contexts until the system felt inevitable." },
   ];
 
-  const stats = [
-    { value: "340%", label: "Increase in brand recall" },
-    { value: "2.4×", label: "Engagement lift" },
-    { value: "18", label: "Awards & recognitions" },
-  ];
-
   return (
     <div className="min-h-screen" style={{ background: "var(--color-cream)" }}>
       {/* Hero */}
@@ -146,24 +140,42 @@ export default function CaseStudyClient({
                   sizes="100vw"
                 />
               </div>
-              {/* Remaining images side by side */}
-              {project.images.length > 1 && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {project.images.slice(1).map((img) => (
-                    <div
-                      key={img.src}
-                      className="relative w-full overflow-hidden"
-                      style={{ aspectRatio: img.width / img.height }}
-                    >
-                      <Image
-                        src={img.src}
-                        alt={img.alt}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                      />
-                    </div>
-                  ))}
+              {/* Second image (wisepop) */}
+              {project.images[1] && (
+                <div
+                  className="relative w-full overflow-hidden"
+                  style={{ aspectRatio: `${project.images[1].width} / ${project.images[1].height}` }}
+                >
+                  <Image
+                    src={project.images[1].src}
+                    alt={project.images[1].alt}
+                    fill
+                    className="object-cover"
+                    sizes="100vw"
+                  />
+                </div>
+              )}
+              {/* Third image with label */}
+              {project.images[2] && (
+                <div>
+                  <h3
+                    className="font-heading text-dark mb-4 mt-4"
+                    style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)" }}
+                  >
+                    SUPPLEMENTARY QUIZ
+                  </h3>
+                  <div
+                    className="relative w-full overflow-hidden"
+                    style={{ aspectRatio: `${project.images[2].width} / ${project.images[2].height}` }}
+                  >
+                    <Image
+                      src={project.images[2].src}
+                      alt={project.images[2].alt}
+                      fill
+                      className="object-cover"
+                      sizes="100vw"
+                    />
+                  </div>
                 </div>
               )}
             </div>
@@ -211,47 +223,6 @@ export default function CaseStudyClient({
           </div>
         </div>
       </section>
-
-      {/* Outcomes */}
-      <motion.section
-        variants={reveal}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="py-20 px-6 md:px-10"
-        style={{ background: "var(--color-cream)" }}
-      >
-        <div className="max-w-7xl mx-auto">
-          <h2
-            className="font-heading text-dark mb-12"
-            style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
-          >
-            OUTCOMES
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {stats.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                variants={reveal}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <span
-                  className="font-heading text-blue block leading-none mb-2"
-                  style={{ fontSize: "clamp(4rem, 7vw, 6rem)" }}
-                >
-                  {stat.value}
-                </span>
-                <p className="font-subtitle italic text-dark/60 text-lg">
-                  {stat.label}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
 
       {/* Next project */}
       <Link
