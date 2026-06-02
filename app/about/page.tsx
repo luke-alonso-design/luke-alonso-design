@@ -40,7 +40,7 @@ export default function AboutPage() {
                 className="font-heading text-cream/20 text-4xl leading-none"
                 style={{ letterSpacing: "0.05em" }}
               >
-                ALEX NOVA
+                LUKE ALONSO
               </span>
             </div>
           </motion.div>
@@ -54,7 +54,7 @@ export default function AboutPage() {
               className="font-heading text-blue leading-none mb-6"
               style={{ fontSize: "clamp(3.5rem, 7vw, 6.5rem)" }}
             >
-              ALEX NOVA
+              LUKE ALONSO
             </motion.h1>
 
             <motion.p

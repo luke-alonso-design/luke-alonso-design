@@ -28,9 +28,9 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Alex Nova — Visual Designer & Creative Director",
+  title: "Luke Alonso — Visual Designer & Creative Director",
   description:
-    "Portfolio of Alex Nova — crafting bold identities, digital experiences, and motion design.",
+    "Portfolio of Luke Alonso — crafting bold identities, digital experiences, and motion design.",
 };
 
 export default function RootLayout({

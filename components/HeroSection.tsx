@@ -40,7 +40,7 @@ export default function HeroSection() {
               letterSpacing: "0.02em",
             }}
           >
-            ALEX NOVA
+            LUKE ALONSO
           </motion.h1>
         </div>
 

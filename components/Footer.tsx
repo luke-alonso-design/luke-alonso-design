@@ -6,10 +6,10 @@ export default function Footer() {
     >
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         <span className="font-heading text-blue text-xl tracking-widest">
-          ALEX NOVA
+          LUKE ALONSO
         </span>
         <p className="font-body text-xs text-dark/50">
-          © {new Date().getFullYear()} Alex Nova. All rights reserved.
+          © {new Date().getFullYear()} Luke Alonso. All rights reserved.
         </p>
         <div className="flex gap-6">
           {["Dribbble", "Behance", "LinkedIn"].map((s) => (

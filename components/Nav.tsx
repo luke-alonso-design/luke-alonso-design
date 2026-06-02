@@ -44,7 +44,7 @@ export default function Nav() {
             href="/"
             className="font-heading text-cream text-2xl tracking-widest uppercase"
           >
-            ALEX NOVA
+            LUKE ALONSO
           </Link>
 
           {/* Desktop links */}
