@@ -140,23 +140,39 @@ export default function CaseStudyClient({
                   sizes="100vw"
                 />
               </div>
-              {/* Second image (wisepop) */}
+              {/* Square + Vertical side by side */}
               {project.images[1] && (
-                <div
-                  className="relative w-full overflow-hidden"
-                  style={{ aspectRatio: `${project.images[1].width} / ${project.images[1].height}` }}
-                >
-                  <Image
-                    src={project.images[1].src}
-                    alt={project.images[1].alt}
-                    fill
-                    className="object-cover"
-                    sizes="100vw"
-                  />
+                <div className="grid grid-cols-2 gap-4 items-start">
+                  <div
+                    className="relative w-full overflow-hidden"
+                    style={{ aspectRatio: `${project.images[1].width} / ${project.images[1].height}` }}
+                  >
+                    <Image
+                      src={project.images[1].src}
+                      alt={project.images[1].alt}
+                      fill
+                      className="object-cover"
+                      sizes="50vw"
+                    />
+                  </div>
+                  {project.images[2] && (
+                    <div
+                      className="relative w-full overflow-hidden"
+                      style={{ aspectRatio: `${project.images[2].width} / ${project.images[2].height}` }}
+                    >
+                      <Image
+                        src={project.images[2].src}
+                        alt={project.images[2].alt}
+                        fill
+                        className="object-cover"
+                        sizes="50vw"
+                      />
+                    </div>
+                  )}
                 </div>
               )}
-              {/* Third image with label */}
-              {project.images[2] && (
+              {/* Fourth image with label */}
+              {project.images[3] && (
                 <div>
                   <h3
                     className="font-heading text-dark mb-4 mt-4"
@@ -166,11 +182,11 @@ export default function CaseStudyClient({
                   </h3>
                   <div
                     className="relative w-full overflow-hidden"
-                    style={{ aspectRatio: `${project.images[2].width} / ${project.images[2].height}` }}
+                    style={{ aspectRatio: `${project.images[3].width} / ${project.images[3].height}` }}
                   >
                     <Image
-                      src={project.images[2].src}
-                      alt={project.images[2].alt}
+                      src={project.images[3].src}
+                      alt={project.images[3].alt}
                       fill
                       className="object-cover"
                       sizes="100vw"
