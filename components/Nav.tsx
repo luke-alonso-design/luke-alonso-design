@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -40,11 +41,15 @@ export default function Nav() {
         className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${bgClass}`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between h-16">
-          <Link
-            href="/"
-            className="font-heading text-cream text-2xl tracking-widest uppercase"
-          >
-            LUKE ALONSO
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/name.png"
+              alt="Luke Alonso"
+              width={160}
+              height={90}
+              className="h-10 w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop links */}
@@ -99,8 +104,11 @@ export default function Nav() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
             className="fixed inset-0 z-40 flex flex-col items-center justify-center"
-            style={{ background: "var(--color-blue)" }}
+            style={{ background: "var(--color-dark)" }}
           >
+            <div className="mb-8">
+              <Image src="/name.png" alt="Luke Alonso" width={240} height={135} className="h-16 w-auto object-contain" />
+            </div>
             <ul className="flex flex-col items-center gap-8">
               {links.map((l, i) => (
                 <motion.li
