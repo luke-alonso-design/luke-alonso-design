@@ -78,7 +78,7 @@ export default function CaseStudyClient({
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-2 md:grid-cols-4 gap-8 py-10">
           {[
-            { label: "Client", value: project.client },
+            { label: "Company", value: project.client },
             { label: "Role", value: project.role },
             { label: "Year", value: project.year },
             { label: "Tools", value: project.tools },

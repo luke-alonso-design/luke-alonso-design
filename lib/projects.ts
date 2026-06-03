@@ -19,9 +19,9 @@ export const projects: Project[] = [
     slug: "fatherhood-101",
     title: "Fatherhood 101",
     category: "Campaign Branding",
-    year: "2024",
+    year: "2026",
     client: "PragerU",
-    role: "Creative Director",
+    role: "Lead Graphic Designer",
     tools: "Photoshop, Illustrator, After Effects",
     description: "Campaign branding for a Father's Day educational series.",
     overview:

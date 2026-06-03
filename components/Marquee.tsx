@@ -1,5 +1,5 @@
 export default function Marquee() {
-  const text = "BRANDING · UI/UX · MOTION · PRINT · IDENTITY · ";
+  const text = "DESIGN · BRANDING · PRINT · MOTION · ";
   const repeated = text.repeat(8);
 
   return (
