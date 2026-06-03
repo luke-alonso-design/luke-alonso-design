@@ -175,8 +175,26 @@ export default function CaseStudyClient({
                 >
                   SUPPLEMENTARY QUIZ
                 </h2>
-                <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/9" }}>
+                <div className="relative w-full overflow-hidden mb-12" style={{ aspectRatio: "16/9" }}>
                   <Image src={project.images[4].src} alt={project.images[4].alt} fill className="object-cover" sizes="100vw" />
+                </div>
+              </>
+            )}
+
+            {/* LANDING PAGE */}
+            {project.images[5] && (
+              <>
+                <h2
+                  className="font-heading text-dark mb-6"
+                  style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
+                >
+                  LANDING PAGE
+                </h2>
+                <div
+                  className="relative w-full overflow-hidden"
+                  style={{ aspectRatio: `${project.images[5].width} / ${project.images[5].height}` }}
+                >
+                  <Image src={project.images[5].src} alt={project.images[5].alt} fill className="object-cover" sizes="100vw" />
                 </div>
               </>
             )}

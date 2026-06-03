@@ -22,7 +22,7 @@ export const projects: Project[] = [
     year: "2026",
     client: "PragerU",
     role: "Lead Graphic Designer",
-    tools: "Photoshop, Illustrator, After Effects",
+    tools: "Photoshop, Illustrator",
     description: "Campaign branding for a Father's Day educational series.",
     overview:
       "Fatherhood 101 is a course featuring 8 of PragerU's most powerful videos on fatherhood, masculinity, marriage, parenting, and family life. The visual identity needed to feel warm and family-oriented — built for distribution across social, email, and web.",
@@ -35,6 +35,7 @@ export const projects: Project[] = [
       { src: "/campaigns/fatherhood-101/vertical.jpg", alt: "Fatherhood 101 Vertical", width: 1080, height: 1920 },
       { src: "/campaigns/fatherhood-101/horizontal.jpg", alt: "Fatherhood 101 Horizontal", width: 1920, height: 1080 },
       { src: "/campaigns/fatherhood-101/quiz-thumbnail.jpg", alt: "Great American Fathers Quiz Thumbnail", width: 1920, height: 1080 },
+      { src: "/campaigns/fatherhood-101/page.png", alt: "Fatherhood 101 Landing Page", width: 1392, height: 1442 },
 
     ],
   },
