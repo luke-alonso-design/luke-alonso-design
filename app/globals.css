@@ -61,6 +61,16 @@ body {
   will-change: transform;
 }
 
+/* Collage overlay — hidden by default, visible on card hover */
+.collage-overlay {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .collage-overlay {
+  opacity: 1;
+}
+
 /* Project card hover overlay */
 .card-overlay {
   position: absolute;
