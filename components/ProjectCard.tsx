@@ -12,8 +12,10 @@ interface Props {
 
 
 export default function ProjectCard({ project, className = "" }: Props) {
-  const heroImage = project.images?.[0];
   const collage = project.collageImages;
+  // Use explicit thumbnail if set, otherwise fall back to first image
+  const thumbSrc = project.thumbnail ?? project.images?.[0]?.src;
+  const thumbAlt = project.images?.[0]?.alt ?? project.title;
 
   return (
     <motion.div
@@ -23,11 +25,11 @@ export default function ProjectCard({ project, className = "" }: Props) {
       style={{ aspectRatio: project.aspect === "portrait" ? "3/4" : "16/9" }}
     >
       <Link href={`/work/${project.slug}`} className="block w-full h-full">
-        {/* Base image or color */}
-        {heroImage ? (
+        {/* Base thumbnail */}
+        {thumbSrc ? (
           <Image
-            src={heroImage.src}
-            alt={heroImage.alt}
+            src={thumbSrc}
+            alt={thumbAlt}
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 50vw"

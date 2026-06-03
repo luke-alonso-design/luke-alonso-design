@@ -20,6 +20,7 @@ export interface Project {
   aspect: "landscape" | "portrait";
   images?: ProjectImage[];
   collageImages?: ProjectImage[];
+  thumbnail?: string;
 }
 
 export const projects: Project[] = [
@@ -45,6 +46,7 @@ export const projects: Project[] = [
       { src: "/campaigns/fatherhood-101/quiz.jpg",      alt: "Supplementary Quiz",        width: 1920, height: 1080 },
       { src: "/campaigns/fatherhood-101/page.png",      alt: "Fatherhood 101 Landing Page", width: 1380, height: 1444 },
     ],
+    thumbnail: "/campaigns/fatherhood-101/square.jpg",
     collageImages: [
       { src: "/campaigns/fatherhood-101/spotlight.png", alt: "Spotlight",   width: 1920, height: 1080 },
       { src: "/campaigns/fatherhood-101/square.jpg",    alt: "Square",      width: 1080, height: 1080 },
