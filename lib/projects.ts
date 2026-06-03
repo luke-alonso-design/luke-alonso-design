@@ -1,3 +1,10 @@
+export interface ProjectImage {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
 export interface Project {
   slug: string;
   title: string;
@@ -11,7 +18,8 @@ export interface Project {
   featured: boolean;
   color: string;
   aspect: "landscape" | "portrait";
-  images?: { src: string; alt: string; width: number; height: number }[];
+  images?: ProjectImage[];
+  collageImages?: ProjectImage[];
 }
 
 export const projects: Project[] = [
@@ -31,12 +39,19 @@ export const projects: Project[] = [
     aspect: "landscape",
     images: [
       { src: "/campaigns/fatherhood-101/spotlight.png", alt: "Fatherhood 101 Spotlight", width: 1920, height: 1080 },
-      { src: "/campaigns/fatherhood-101/square.jpg", alt: "Fatherhood 101 Square", width: 1080, height: 1080 },
-      { src: "/campaigns/fatherhood-101/vertical.jpg", alt: "Fatherhood 101 Vertical", width: 1080, height: 1920 },
-      { src: "/campaigns/fatherhood-101/horizontal.jpg", alt: "Fatherhood 101 Horizontal", width: 1920, height: 1080 },
-      { src: "/campaigns/fatherhood-101/quiz-thumbnail.jpg", alt: "Great American Fathers Quiz Thumbnail", width: 1920, height: 1080 },
-      { src: "/campaigns/fatherhood-101/page.png", alt: "Fatherhood 101 Landing Page", width: 1392, height: 1442 },
-
+      { src: "/campaigns/fatherhood-101/square.jpg",    alt: "Fatherhood 101 Square",    width: 1080, height: 1080 },
+      { src: "/campaigns/fatherhood-101/vertical.jpg",  alt: "Fatherhood 101 Vertical",  width: 1080, height: 1920 },
+      { src: "/campaigns/fatherhood-101/horizontal.jpg",alt: "Fatherhood 101 Horizontal",width: 1920, height: 1080 },
+      { src: "/campaigns/fatherhood-101/quiz.jpg",      alt: "Supplementary Quiz",        width: 1920, height: 1080 },
+      { src: "/campaigns/fatherhood-101/page.png",      alt: "Fatherhood 101 Landing Page", width: 1380, height: 1444 },
+    ],
+    collageImages: [
+      { src: "/campaigns/fatherhood-101/spotlight.png", alt: "Spotlight",   width: 1920, height: 1080 },
+      { src: "/campaigns/fatherhood-101/square.jpg",    alt: "Square",      width: 1080, height: 1080 },
+      { src: "/campaigns/fatherhood-101/vertical.jpg",  alt: "Vertical",    width: 1080, height: 1920 },
+      { src: "/campaigns/fatherhood-101/horizontal.jpg",alt: "Horizontal",  width: 1920, height: 1080 },
+      { src: "/campaigns/fatherhood-101/page.png",      alt: "Page",        width: 1380, height: 1444 },
+      { src: "/campaigns/fatherhood-101/quiz.jpg",      alt: "Quiz",        width: 1920, height: 1080 },
     ],
   },
   {

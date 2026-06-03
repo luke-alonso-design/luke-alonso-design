@@ -25,56 +25,13 @@ export default function CaseStudyClient({
 
   return (
     <div className="min-h-screen" style={{ background: "var(--color-cream)" }}>
-      {/* Hero */}
-      <div
-        className="relative flex items-end px-6 md:px-10 pb-16 pt-32 min-h-[60vh]"
-        style={{ background: project.color }}
-      >
-        {project.images?.[0] && (
-          <Image
-            src={project.images[0].src}
-            alt={project.images[0].alt}
-            fill
-            className="object-cover opacity-40"
-            priority
-            sizes="100vw"
-          />
-        )}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 16px)",
-          }}
-        />
-        <div className="relative z-10 max-w-7xl mx-auto w-full">
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="font-subtitle italic text-cream/60 text-lg mb-4"
-          >
-            {project.category} · {project.year}
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-            className="font-heading text-cream leading-none"
-            style={{ fontSize: "clamp(3.5rem, 10vw, 9rem)" }}
-          >
-            {project.title.toUpperCase()}
-          </motion.h1>
-        </div>
-      </div>
-
-      {/* Info bar */}
+      {/* Info bar — now the first thing */}
       <motion.div
         variants={reveal}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="border-b-2 border-blue/10"
+        className="pt-20 border-b-2 border-blue/10"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-2 md:grid-cols-4 gap-8 py-10">
           {[
@@ -103,7 +60,7 @@ export default function CaseStudyClient({
           className="font-heading text-dark mb-6"
           style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
         >
-          OVERVIEW
+          PROJECT OVERVIEW
         </h2>
         <p
           className="font-body text-dark/80 text-lg leading-relaxed"
