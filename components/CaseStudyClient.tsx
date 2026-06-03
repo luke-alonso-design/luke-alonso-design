@@ -123,65 +123,64 @@ export default function CaseStudyClient({
           className="px-6 md:px-10 pb-16"
         >
           <div className="max-w-7xl mx-auto">
+
+            {/* FATHERHOOD 101 — Spotlight centered */}
             <h2
-              className="font-heading text-dark mb-8"
+              className="font-heading text-dark mb-6"
               style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
             >
               FATHERHOOD 101
             </h2>
-            {/* 3-col grid: Spotlight spans 2, Square fills 1 | Vertical fills 1, Quiz spans 2 */}
-            <div className="grid grid-cols-3 gap-3">
-              {/* Row 1: Spotlight (2/3) + Square (1/3) */}
-              <div className="col-span-2 relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
-                <Image
-                  src={project.images[0].src}
-                  alt={project.images[0].alt}
-                  fill
-                  className="object-cover"
-                  sizes="66vw"
-                />
-              </div>
+            <div className="relative w-full overflow-hidden mb-12" style={{ aspectRatio: "16/9" }}>
+              <Image
+                src={project.images[0].src}
+                alt={project.images[0].alt}
+                fill
+                className="object-cover"
+                sizes="100vw"
+              />
+            </div>
+
+            {/* ASSETS CREATED — Square, Vertical, Horizontal in a row */}
+            <h2
+              className="font-heading text-dark mb-6"
+              style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
+            >
+              ASSETS CREATED
+            </h2>
+            <div className="grid grid-cols-3 gap-3 mb-12 items-start">
               {project.images[1] && (
-                <div className="col-span-1 relative overflow-hidden" style={{ aspectRatio: "1/1" }}>
-                  <Image
-                    src={project.images[1].src}
-                    alt={project.images[1].alt}
-                    fill
-                    className="object-cover"
-                    sizes="33vw"
-                  />
+                <div className="relative overflow-hidden" style={{ aspectRatio: "1/1" }}>
+                  <Image src={project.images[1].src} alt={project.images[1].alt} fill className="object-cover" sizes="33vw" />
                 </div>
               )}
-
-              {/* Row 2: Vertical (1/3) + Quiz label + image (2/3) */}
               {project.images[2] && (
-                <div className="col-span-1 relative overflow-hidden" style={{ aspectRatio: "9/16" }}>
-                  <Image
-                    src={project.images[2].src}
-                    alt={project.images[2].alt}
-                    fill
-                    className="object-cover"
-                    sizes="33vw"
-                  />
+                <div className="relative overflow-hidden" style={{ aspectRatio: "9/16" }}>
+                  <Image src={project.images[2].src} alt={project.images[2].alt} fill className="object-cover" sizes="33vw" />
                 </div>
               )}
               {project.images[3] && (
-                <div className="col-span-2 flex flex-col gap-2">
-                  <p className="font-heading text-dark text-xl tracking-widest">
-                    SUPPLEMENTARY QUIZ
-                  </p>
-                  <div className="relative overflow-hidden flex-1" style={{ aspectRatio: "16/9" }}>
-                    <Image
-                      src={project.images[3].src}
-                      alt={project.images[3].alt}
-                      fill
-                      className="object-cover"
-                      sizes="66vw"
-                    />
-                  </div>
+                <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
+                  <Image src={project.images[3].src} alt={project.images[3].alt} fill className="object-cover" sizes="33vw" />
                 </div>
               )}
             </div>
+
+            {/* SUPPLEMENTARY QUIZ */}
+            {project.images[4] && (
+              <>
+                <h2
+                  className="font-heading text-dark mb-6"
+                  style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
+                >
+                  SUPPLEMENTARY QUIZ
+                </h2>
+                <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/9" }}>
+                  <Image src={project.images[4].src} alt={project.images[4].alt} fill className="object-cover" sizes="100vw" />
+                </div>
+              </>
+            )}
+
           </div>
         </motion.section>
       )}

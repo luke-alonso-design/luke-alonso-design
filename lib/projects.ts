@@ -33,6 +33,7 @@ export const projects: Project[] = [
       { src: "/campaigns/fatherhood-101/spotlight.png", alt: "Fatherhood 101 Spotlight", width: 1920, height: 1080 },
       { src: "/campaigns/fatherhood-101/square.jpg", alt: "Fatherhood 101 Square", width: 1080, height: 1080 },
       { src: "/campaigns/fatherhood-101/vertical.jpg", alt: "Fatherhood 101 Vertical", width: 1080, height: 1920 },
+      { src: "/campaigns/fatherhood-101/horizontal.jpg", alt: "Fatherhood 101 Horizontal", width: 1920, height: 1080 },
       { src: "/campaigns/fatherhood-101/quiz-thumbnail.jpg", alt: "Great American Fathers Quiz Thumbnail", width: 1920, height: 1080 },
 
     ],
