@@ -41,26 +41,30 @@ export default function ProjectCard({ project, className = "" }: Props) {
           </div>
         )}
 
-        {/* Collage hover overlay */}
+        {/* Collage hover overlay — no cropping, uneven sizing */}
         {collage ? (
           <div
-            className="collage-overlay absolute inset-0 p-2"
+            className="collage-overlay absolute inset-0 p-3"
             style={{ background: "var(--color-cream)" }}
           >
             <div
-              className="w-full h-full grid gap-1.5"
+              className="w-full h-full grid gap-2"
               style={{
-                gridTemplateColumns: "repeat(3, 1fr)",
-                gridTemplateRows: "repeat(2, 1fr)",
+                gridTemplateColumns: "2fr 1.3fr 1fr",
+                gridTemplateRows: "1.1fr 1fr",
               }}
             >
               {collage.slice(0, 6).map((img) => (
-                <div key={img.src} className="relative overflow-hidden">
+                <div
+                  key={img.src}
+                  className="relative flex items-center justify-center overflow-hidden"
+                  style={{ background: "var(--color-cream)" }}
+                >
                   <Image
                     src={img.src}
                     alt={img.alt}
                     fill
-                    className="object-cover"
+                    className="object-contain"
                     sizes="20vw"
                   />
                 </div>

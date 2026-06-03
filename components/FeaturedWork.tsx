@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
-import { getFeaturedProjects } from "@/lib/projects";
+import { projects } from "@/lib/projects";
 import ProjectCard from "./ProjectCard";
 
 const sectionVariant: Variants = {
@@ -11,7 +11,7 @@ const sectionVariant: Variants = {
 };
 
 export default function FeaturedWork() {
-  const featured = getFeaturedProjects();
+  const campaigns = projects.filter(p => p.category === "Campaign Branding");
 
   return (
     <section
@@ -38,33 +38,16 @@ export default function FeaturedWork() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* First card — full width featured */}
-          {featured[0] && (
-            <motion.div
-              className="md:col-span-2"
-              variants={sectionVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-            >
-              <ProjectCard
-                project={{ ...featured[0], aspect: "landscape" }}
-                className="w-full"
-              />
-            </motion.div>
-          )}
-
-          {/* Remaining cards */}
-          {featured.slice(1).map((project, i) => (
+          {campaigns.map((project, i) => (
             <motion.div
               key={project.slug}
               variants={sectionVariant}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.1 }}
-              transition={{ delay: i * 0.1 }}
+              transition={{ delay: (i % 2) * 0.1 }}
             >
-              <ProjectCard project={project} className="w-full" />
+              <ProjectCard project={{ ...project, aspect: "landscape" }} className="w-full" />
             </motion.div>
           ))}
         </div>
