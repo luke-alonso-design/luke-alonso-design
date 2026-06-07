@@ -186,49 +186,68 @@ export default function CaseStudyClient({
               );
             })()}
 
-            {/* SUPPLEMENTARY — if images[4] and images[5] both exist, show side-by-side */}
-            {project.supplementaryLabel && project.images[4] && (
+            {/* SUPPLEMENTARY QUIZ — full width, only when no emailImage pairing (i.e. Fatherhood 101 quiz) */}
+            {project.supplementaryLabel && project.images[4] && !project.emailImage && (
               <>
-                <h2
-                  className="font-heading text-dark mb-6"
-                  style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
-                >
+                <h2 className="font-heading text-dark mb-6" style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}>
                   {project.supplementaryLabel}
                 </h2>
-                {project.images[5] ? (
-                  /* Side-by-side, equal height */
-                  <div className="flex gap-4 items-stretch mb-12">
-                    <div className="flex-1 relative overflow-hidden" style={{ minHeight: 0 }}>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={project.images[4].src} alt={project.images[4].alt} className="w-full h-full object-contain block" style={{ maxHeight: 700 }} />
-                    </div>
-                    <div className="flex-1 relative overflow-hidden" style={{ minHeight: 0 }}>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={project.images[5].src} alt={project.images[5].alt} className="w-full h-full object-contain block" style={{ maxHeight: 700 }} />
-                    </div>
-                  </div>
-                ) : (
-                  <div className="relative w-full overflow-hidden mb-12" style={{ aspectRatio: "16/9" }}>
-                    <Image src={project.images[4].src} alt={project.images[4].alt} fill className="object-cover" sizes="100vw" />
-                  </div>
-                )}
+                <div className="relative w-full overflow-hidden mb-12" style={{ aspectRatio: "16/9" }}>
+                  <Image src={project.images[4].src} alt={project.images[4].alt} fill className="object-cover" sizes="100vw" />
+                </div>
               </>
             )}
 
-            {/* LANDING PAGE — standalone only if no supplementaryLabel (no images[5] pairing) */}
-            {!project.supplementaryLabel && project.images[5] && (
+            {/* SUPPLEMENTARY QUIZ for Fatherhood (has emailImage too — quiz shown alone, landing+email shown together) */}
+            {project.supplementaryLabel && project.images[4] && project.emailImage && !project.landingPageLabel && (
               <>
-                <h2
-                  className="font-heading text-dark mb-6"
-                  style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
-                >
-                  LANDING PAGE
+                <h2 className="font-heading text-dark mb-6" style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}>
+                  {project.supplementaryLabel}
                 </h2>
-                <div
-                  className="relative w-full overflow-hidden"
-                  style={{ aspectRatio: `${project.images[5].width} / ${project.images[5].height}` }}
-                >
-                  <Image src={project.images[5].src} alt={project.images[5].alt} fill className="object-cover" sizes="100vw" />
+                {/* Ten Commandments: ebook + landing page + email all three side-by-side */}
+                <div className="flex gap-4 items-stretch mb-12" style={{ height: 520 }}>
+                  {[project.images[4], project.images[5], { src: project.emailImage, alt: "Email Design" }]
+                    .filter(Boolean)
+                    .map((img) => img && (
+                      <div key={img.src} className="flex-1 overflow-hidden">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={img.src} alt={img.alt} className="w-full h-full object-contain block" />
+                      </div>
+                    ))}
+                </div>
+              </>
+            )}
+
+            {/* SUPPLEMENTARY QUIZ standalone for Fatherhood 101 (has landingPageLabel, so quiz shows alone) */}
+            {project.supplementaryLabel && project.images[4] && project.landingPageLabel && (
+              <>
+                <h2 className="font-heading text-dark mb-6" style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}>
+                  {project.supplementaryLabel}
+                </h2>
+                <div className="relative w-full overflow-hidden mb-12" style={{ aspectRatio: "16/9" }}>
+                  <Image src={project.images[4].src} alt={project.images[4].alt} fill className="object-cover" sizes="100vw" />
+                </div>
+              </>
+            )}
+
+            {/* LANDING PAGE & EMAIL DESIGNS — side-by-side, equal height */}
+            {project.landingPageLabel && (
+              <>
+                <h2 className="font-heading text-dark mb-6" style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}>
+                  {project.landingPageLabel}
+                </h2>
+                <div className="flex gap-4 items-stretch mb-12" style={{ height: 520 }}>
+                  {[
+                    project.images?.[5] ?? null,
+                    project.emailImage ? { src: project.emailImage, alt: "Email Design" } : null,
+                  ]
+                    .filter(Boolean)
+                    .map((img) => img && (
+                      <div key={img.src} className="flex-1 overflow-hidden">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={img.src} alt={img.alt} className="w-full h-full object-contain block" />
+                      </div>
+                    ))}
                 </div>
               </>
             )}

@@ -24,6 +24,8 @@ export interface Project {
   supplementaryLabel?: string;
   headerImage?: string;
   overviewHero?: string;
+  emailImage?: string;
+  landingPageLabel?: string;
 }
 
 export const projects: Project[] = [
@@ -51,6 +53,8 @@ export const projects: Project[] = [
     ],
     thumbnail: "/campaigns/fatherhood-101/horizontal.jpg",
     overviewHero: "/campaigns/fatherhood-101/hero.png",
+    emailImage: "/campaigns/fatherhood-101/email.jpg",
+    landingPageLabel: "LANDING PAGE & EMAIL DESIGNS",
     collageImages: [
       { src: "/campaigns/fatherhood-101/spotlight.png", alt: "Spotlight",   width: 1920, height: 1080 },
       { src: "/campaigns/fatherhood-101/square.jpg",    alt: "Square",      width: 1080, height: 1080 },
@@ -76,7 +80,8 @@ export const projects: Project[] = [
     aspect: "landscape",
     thumbnail: "/campaigns/ten-commandments-101/cover.jpg",
     overviewHero: "/campaigns/ten-commandments-101/hero.jpg",
-    supplementaryLabel: "E-BOOK & LANDING PAGE",
+    supplementaryLabel: "E-BOOK, LANDING PAGE & EMAIL DESIGNS",
+    emailImage: "/campaigns/ten-commandments-101/email.jpg",
     images: [
       { src: "/campaigns/ten-commandments-101/cover.jpg",     alt: "Ten Commandments 101 Cover",      width: 1920, height: 1080 },
       { src: "/campaigns/ten-commandments-101/square.jpg",    alt: "Ten Commandments 101 Square",     width: 1080, height: 1080 },
@@ -103,6 +108,8 @@ export const projects: Project[] = [
     role: "Lead Graphic Designer",
     tools: "Photoshop, Illustrator",
     overviewHero: "/campaigns/supreme-court-101/hero.jpg",
+    emailImage: "/campaigns/supreme-court-101/email.jpg",
+    landingPageLabel: "LANDING PAGE & EMAIL DESIGNS",
     description: "Campaign branding for PragerU's series on America's highest court and landmark decisions.",
     overview:
       "Supreme Court 101 features PragerU's top videos explaining America's highest court and the landmark decisions that shaped the nation. Leading legal scholars break down the Supreme Court, its role, and the 10 cases every American should know.",
