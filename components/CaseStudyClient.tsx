@@ -156,27 +156,37 @@ export default function CaseStudyClient({
             {/* ADS & SOCIAL (includes email + quiz) */}
             <p className="font-subtitle italic text-dark/50 text-sm uppercase tracking-widest mb-4">Ads &amp; Social</p>
 
-            {/* Row 1: square, vertical, horizontal */}
-            <div className="grid grid-cols-3 gap-3 mb-3" style={{ maxWidth: "70%" }}>
-              <div className="relative overflow-hidden" style={{ aspectRatio: "1/1" }}>
-                <Image src="/campaigns/fatherhood-101/square.jpg" alt="Square" fill className="object-cover" sizes="25vw" />
+            {/* Grid: Square | Vertical | Horizontal + Email (right, top-aligned) / Quiz (under Horizontal) */}
+            <div
+              className="mb-10"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr 2fr auto",
+                gridTemplateRows: "auto auto",
+                gap: "0.75rem",
+                maxWidth: "80%",
+              }}
+            >
+              {/* Square — spans both rows on left */}
+              <div className="relative overflow-hidden" style={{ gridColumn: 1, gridRow: "1 / 3", aspectRatio: "1/1" }}>
+                <Image src="/campaigns/fatherhood-101/square.jpg" alt="Square" fill className="object-cover" sizes="20vw" />
               </div>
-              <div className="relative overflow-hidden" style={{ aspectRatio: "9/16" }}>
-                <Image src="/campaigns/fatherhood-101/vertical.jpg" alt="Vertical" fill className="object-cover" sizes="25vw" />
+              {/* Vertical — spans both rows */}
+              <div className="relative overflow-hidden" style={{ gridColumn: 2, gridRow: "1 / 3", aspectRatio: "9/16" }}>
+                <Image src="/campaigns/fatherhood-101/vertical.jpg" alt="Vertical" fill className="object-cover" sizes="20vw" />
               </div>
-              <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
-                <Image src="/campaigns/fatherhood-101/horizontal.jpg" alt="Horizontal" fill className="object-cover" sizes="25vw" />
+              {/* Horizontal — row 1, col 3 */}
+              <div className="relative overflow-hidden" style={{ gridColumn: 3, gridRow: 1, aspectRatio: "16/9" }}>
+                <Image src="/campaigns/fatherhood-101/horizontal.jpg" alt="Horizontal" fill className="object-cover" sizes="30vw" />
               </div>
-            </div>
-
-            {/* Row 2: email (small) + quiz side by side */}
-            <div className="flex gap-3 items-end mb-10" style={{ maxWidth: "70%" }}>
-              <div style={{ width: "18%" }}>
+              {/* Email — row 1, col 4, small, top-aligned */}
+              <div style={{ gridColumn: 4, gridRow: 1, width: 90, alignSelf: "start" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/campaigns/fatherhood-101/email.jpg" alt="Email Design" className="w-full h-auto block" />
               </div>
-              <div className="flex-1 relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
-                <Image src="/campaigns/fatherhood-101/quiz.jpg" alt="Quiz" fill className="object-cover" sizes="50vw" />
+              {/* Quiz — row 2, col 3 only (same width as Horizontal) */}
+              <div className="relative overflow-hidden" style={{ gridColumn: 3, gridRow: 2, aspectRatio: "16/9" }}>
+                <Image src="/campaigns/fatherhood-101/quiz.jpg" alt="Quiz" fill className="object-cover" sizes="30vw" />
               </div>
             </div>
 
