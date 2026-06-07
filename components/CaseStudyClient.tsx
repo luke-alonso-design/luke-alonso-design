@@ -163,11 +163,12 @@ export default function CaseStudyClient({
                 display: "grid",
                 gridTemplateColumns: "1fr 1fr 2fr auto",
                 gridTemplateRows: "auto auto",
-                gap: "0.75rem",
+                columnGap: "0.75rem",
+                rowGap: "0.3rem",
                 maxWidth: "80%",
               }}
             >
-              {/* Square — spans both rows on left */}
+              {/* Square — spans both rows */}
               <div className="relative overflow-hidden" style={{ gridColumn: 1, gridRow: "1 / 3", aspectRatio: "1/1" }}>
                 <Image src="/campaigns/fatherhood-101/square.jpg" alt="Square" fill className="object-cover" sizes="20vw" />
               </div>
@@ -179,12 +180,12 @@ export default function CaseStudyClient({
               <div className="relative overflow-hidden" style={{ gridColumn: 3, gridRow: 1, aspectRatio: "16/9" }}>
                 <Image src="/campaigns/fatherhood-101/horizontal.jpg" alt="Horizontal" fill className="object-cover" sizes="30vw" />
               </div>
-              {/* Email — row 1, col 4, small, top-aligned */}
-              <div style={{ gridColumn: 4, gridRow: 1, width: 90, alignSelf: "start" }}>
+              {/* Email — spans both rows in col 4, stretches top of Horizontal to bottom of Quiz */}
+              <div style={{ gridColumn: 4, gridRow: "1 / 3", width: 90, alignSelf: "stretch", display: "flex" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/campaigns/fatherhood-101/email.jpg" alt="Email Design" className="w-full h-auto block" />
+                <img src="/campaigns/fatherhood-101/email.jpg" alt="Email Design" className="block" style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "top" }} />
               </div>
-              {/* Quiz — row 2, col 3 only (same width as Horizontal) */}
+              {/* Quiz — row 2, col 3, same width as Horizontal */}
               <div className="relative overflow-hidden" style={{ gridColumn: 3, gridRow: 2, aspectRatio: "16/9" }}>
                 <Image src="/campaigns/fatherhood-101/quiz.jpg" alt="Quiz" fill className="object-cover" sizes="30vw" />
               </div>
