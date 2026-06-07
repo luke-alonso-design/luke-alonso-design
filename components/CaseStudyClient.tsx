@@ -180,10 +180,9 @@ export default function CaseStudyClient({
               <div className="relative overflow-hidden" style={{ gridColumn: 3, gridRow: 1, aspectRatio: "16/9" }}>
                 <Image src="/campaigns/fatherhood-101/horizontal.jpg" alt="Horizontal" fill className="object-cover" sizes="30vw" />
               </div>
-              {/* Email — spans both rows in col 4, stretches top of Horizontal to bottom of Quiz */}
-              <div style={{ gridColumn: 4, gridRow: "1 / 3", width: 90, alignSelf: "stretch", display: "flex" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/campaigns/fatherhood-101/email.jpg" alt="Email Design" className="block" style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "top" }} />
+              {/* Email — spans both rows in col 4, top of Horizontal to bottom of Quiz */}
+              <div style={{ gridColumn: 4, gridRow: "1 / 3", width: 90, alignSelf: "stretch", position: "relative" }}>
+                <Image src="/campaigns/fatherhood-101/email.jpg" alt="Email Design" fill className="object-contain" style={{ objectPosition: "top" }} sizes="90px" />
               </div>
               {/* Quiz — row 2, col 3, same width as Horizontal */}
               <div className="relative overflow-hidden" style={{ gridColumn: 3, gridRow: 2, aspectRatio: "16/9" }}>
