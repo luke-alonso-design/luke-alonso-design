@@ -153,9 +153,11 @@ export default function CaseStudyClient({
               ASSETS DESIGNED
             </h2>
 
-            {/* ADS & SOCIAL */}
+            {/* ADS & SOCIAL (includes email + quiz) */}
             <p className="font-subtitle italic text-dark/50 text-sm uppercase tracking-widest mb-4">Ads &amp; Social</p>
-            <div className="grid grid-cols-3 gap-3 mb-10" style={{ maxWidth: "70%" }}>
+
+            {/* Row 1: square, vertical, horizontal */}
+            <div className="grid grid-cols-3 gap-3 mb-3" style={{ maxWidth: "70%" }}>
               <div className="relative overflow-hidden" style={{ aspectRatio: "1/1" }}>
                 <Image src="/campaigns/fatherhood-101/square.jpg" alt="Square" fill className="object-cover" sizes="25vw" />
               </div>
@@ -167,11 +169,15 @@ export default function CaseStudyClient({
               </div>
             </div>
 
-            {/* EMAIL */}
-            <p className="font-subtitle italic text-dark/50 text-sm uppercase tracking-widest mb-4">Email</p>
-            <div className="mb-10" style={{ maxWidth: "40%" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/campaigns/fatherhood-101/email.jpg" alt="Email Design" className="w-full h-auto block" />
+            {/* Row 2: email (small) + quiz side by side */}
+            <div className="flex gap-3 items-end mb-10" style={{ maxWidth: "70%" }}>
+              <div style={{ width: "18%" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/campaigns/fatherhood-101/email.jpg" alt="Email Design" className="w-full h-auto block" />
+              </div>
+              <div className="flex-1 relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
+                <Image src="/campaigns/fatherhood-101/quiz.jpg" alt="Quiz" fill className="object-cover" sizes="50vw" />
+              </div>
             </div>
 
             {/* LANDING PAGE */}
