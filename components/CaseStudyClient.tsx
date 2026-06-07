@@ -139,8 +139,53 @@ export default function CaseStudyClient({
         </motion.section>
       )}
 
-      {/* Standard gallery — only if project has images and no headerImage */}
-      {!project.headerImage && project.images && project.images.length > 0 && (
+      {/* Fatherhood 101 — custom ASSETS DESIGNED layout */}
+      {project.slug === "fatherhood-101" && project.images && (
+        <motion.section
+          variants={reveal}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="px-6 md:px-10 pb-16"
+        >
+          <div className="max-w-7xl mx-auto">
+            <h2 className="font-heading text-dark mb-10" style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}>
+              ASSETS DESIGNED
+            </h2>
+
+            {/* ADS & SOCIAL */}
+            <p className="font-subtitle italic text-dark/50 text-sm uppercase tracking-widest mb-4">Ads &amp; Social</p>
+            <div className="grid grid-cols-3 gap-3 mb-10" style={{ maxWidth: "70%" }}>
+              <div className="relative overflow-hidden" style={{ aspectRatio: "1/1" }}>
+                <Image src="/campaigns/fatherhood-101/square.jpg" alt="Square" fill className="object-cover" sizes="25vw" />
+              </div>
+              <div className="relative overflow-hidden" style={{ aspectRatio: "9/16" }}>
+                <Image src="/campaigns/fatherhood-101/vertical.jpg" alt="Vertical" fill className="object-cover" sizes="25vw" />
+              </div>
+              <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
+                <Image src="/campaigns/fatherhood-101/horizontal.jpg" alt="Horizontal" fill className="object-cover" sizes="25vw" />
+              </div>
+            </div>
+
+            {/* EMAIL */}
+            <p className="font-subtitle italic text-dark/50 text-sm uppercase tracking-widest mb-4">Email</p>
+            <div className="mb-10" style={{ maxWidth: "40%" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/campaigns/fatherhood-101/email.jpg" alt="Email Design" className="w-full h-auto block" />
+            </div>
+
+            {/* LANDING PAGE */}
+            <p className="font-subtitle italic text-dark/50 text-sm uppercase tracking-widest mb-4">Landing Page</p>
+            <div style={{ maxWidth: "55%" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/campaigns/fatherhood-101/page.png" alt="Landing Page" className="w-full h-auto block" />
+            </div>
+          </div>
+        </motion.section>
+      )}
+
+      {/* Standard gallery — only if project has images, no headerImage, and not Fatherhood 101 */}
+      {!project.headerImage && project.slug !== "fatherhood-101" && project.images && project.images.length > 0 && (
         <motion.section
           variants={reveal}
           initial="hidden"

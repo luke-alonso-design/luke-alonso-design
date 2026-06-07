@@ -53,8 +53,6 @@ export const projects: Project[] = [
     ],
     thumbnail: "/campaigns/fatherhood-101/horizontal.jpg",
     overviewHero: "/campaigns/fatherhood-101/hero.png",
-    emailImage: "/campaigns/fatherhood-101/email.jpg",
-    landingPageLabel: "LANDING PAGE & EMAIL DESIGNS",
     collageImages: [
       { src: "/campaigns/fatherhood-101/spotlight.png", alt: "Spotlight",   width: 1920, height: 1080 },
       { src: "/campaigns/fatherhood-101/square.jpg",    alt: "Square",      width: 1080, height: 1080 },
