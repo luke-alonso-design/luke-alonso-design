@@ -5,14 +5,14 @@ import FeaturedWork from "@/components/FeaturedWork";
 export default function Home() {
   return (
     <>
-      <div className="w-full">
+      <div className="relative w-full" style={{ aspectRatio: "16/9" }} data-cursor-cream>
         <Image
-          src="/header.png"
+          src="/hero.jpg"
           alt="Luke Alonso"
-          width={6758}
-          height={3804}
-          className="w-full h-auto block"
+          fill
+          className="object-cover"
           priority
+          sizes="100vw"
         />
       </div>
       <Marquee />

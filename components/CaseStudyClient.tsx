@@ -17,15 +17,9 @@ export default function CaseStudyClient({
   project: Project;
   next: Project;
 }) {
-  const steps = [
-    { num: "01", title: "Research & Discovery", body: "Immersive stakeholder interviews, competitor audits, and cultural mapping to surface the tensions and opportunities that would shape the brief." },
-    { num: "02", title: "Concept & Strategy", body: "Translating insights into a creative direction — moodboards, structural concepts, and a narrative framework that would guide every visual decision." },
-    { num: "03", title: "Design & Refinement", body: "Iterative rounds of high-fidelity design, prototyping, and stress-testing across formats, sizes, and contexts until the system felt inevitable." },
-  ];
-
   return (
     <div className="min-h-screen" style={{ background: "var(--color-cream)" }}>
-      {/* Info bar — now the first thing */}
+      {/* Info bar */}
       <motion.div
         variants={reveal}
         initial="hidden"
@@ -48,7 +42,7 @@ export default function CaseStudyClient({
         </div>
       </motion.div>
 
-      {/* Overview */}
+      {/* Overview — 2-col with hero image when available */}
       <motion.section
         variants={reveal}
         initial="hidden"
@@ -56,22 +50,97 @@ export default function CaseStudyClient({
         viewport={{ once: true }}
         className="max-w-7xl mx-auto px-6 md:px-10 py-16"
       >
-        <h2
-          className="font-heading text-dark mb-6"
-          style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
-        >
-          PROJECT OVERVIEW
-        </h2>
-        <p
-          className="font-body text-dark/80 text-lg leading-relaxed"
-          style={{ maxWidth: 680 }}
-        >
-          {project.overview}
-        </p>
+        {project.overviewHero ? (
+          <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-start">
+            <div className="flex-1 min-w-0">
+              <h2
+                className="font-heading text-dark mb-6"
+                style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
+              >
+                PROJECT OVERVIEW
+              </h2>
+              <p className="font-body text-dark/80 text-lg leading-relaxed">
+                {project.overview}
+              </p>
+            </div>
+            <div className="w-full md:w-2/5 flex-shrink-0">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={project.overviewHero} alt={`${project.title} Hero`} className="w-full h-auto block" />
+            </div>
+          </div>
+        ) : (
+          <>
+            <h2
+              className="font-heading text-dark mb-6"
+              style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
+            >
+              PROJECT OVERVIEW
+            </h2>
+            <p
+              className="font-body text-dark/80 text-lg leading-relaxed"
+              style={{ maxWidth: 680 }}
+            >
+              {project.overview}
+            </p>
+          </>
+        )}
       </motion.section>
 
-      {/* Real images gallery — only if project has images */}
-      {project.images && project.images.length > 0 && (
+      {/* Numbered grid layout — for projects with headerImage (e.g. Presidential Ranking Survey) */}
+      {project.headerImage && project.images && project.images.length > 0 && (
+        <motion.section
+          variants={reveal}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="px-6 md:px-10 pb-24"
+        >
+          <div className="max-w-7xl mx-auto">
+            <h2
+              className="font-heading text-dark mb-8"
+              style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
+            >
+              ASSETS CREATED
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {project.images.map((img, i) => {
+                const totalRows = Math.ceil(project.images!.length / 3);
+                const currentRow = Math.floor(i / 3);
+                const isLastRow = currentRow === totalRows - 1;
+                return (
+                  <div
+                    key={img.src}
+                    className="relative overflow-hidden flex items-center justify-center"
+                    style={{
+                      aspectRatio: "16/9",
+                      background: "var(--color-cream)",
+                    }}
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                    {isLastRow && (
+                      <div
+                        className="absolute inset-0 pointer-events-none"
+                        style={{
+                          background: "linear-gradient(to bottom, transparent 20%, var(--color-cream) 100%)",
+                        }}
+                      />
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </motion.section>
+      )}
+
+      {/* Standard gallery — only if project has images and no headerImage */}
+      {!project.headerImage && project.images && project.images.length > 0 && (
         <motion.section
           variants={reveal}
           initial="hidden"
@@ -81,65 +150,73 @@ export default function CaseStudyClient({
         >
           <div className="max-w-7xl mx-auto">
 
-            {/* FATHERHOOD 101 — Spotlight centered */}
-            <h2
-              className="font-heading text-dark mb-6"
-              style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
-            >
-              FATHERHOOD 101
-            </h2>
-            <div className="relative w-full overflow-hidden mb-12" style={{ aspectRatio: "16/9" }}>
-              <Image
-                src={project.images[0].src}
-                alt={project.images[0].alt}
-                fill
-                className="object-cover"
-                sizes="100vw"
-              />
-            </div>
+            {/* ASSETS CREATED — all images from index 1, up to (not including) supplementary/landing */}
+            {(() => {
+              // Core 3 assets always go in the grid (square, vertical, horizontal)
+              // Any extras beyond [1..3] (e.g. floated hero) render below at natural size
+              const gridImages = project.images!.slice(1, 4);
+              const extraImages = !project.supplementaryLabel
+                ? project.images!.slice(4, project.images![5] ? project.images!.length - 1 : project.images!.length)
+                : [];
+              if (gridImages.length === 0) return null;
+              return (
+                <>
+                  <h2 className="font-heading text-dark mb-6" style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}>
+                    ASSETS CREATED
+                  </h2>
+                  <div className="grid grid-cols-3 gap-3 items-start" style={{ marginBottom: extraImages.length ? "1.5rem" : "3rem" }}>
+                    {gridImages.map((img, idx) => {
+                      const aspectMap: Record<number, string> = { 0: "1/1", 1: "9/16", 2: "16/9" };
+                      const aspect = aspectMap[idx] ?? "1/1";
+                      return (
+                        <div key={img.src} className="relative overflow-hidden" style={{ aspectRatio: aspect }}>
+                          <Image src={img.src} alt={img.alt} fill className="object-cover" sizes="33vw" />
+                        </div>
+                      );
+                    })}
+                  </div>
+                  {/* Extra assets (e.g. floated hero) — full natural width, no cropping */}
+                  {extraImages.map((img) => (
+                    <div key={img.src} className="w-full mb-12">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={img.src} alt={img.alt} className="w-full h-auto block" />
+                    </div>
+                  ))}
+                </>
+              );
+            })()}
 
-            {/* ASSETS CREATED — Square, Vertical, Horizontal in a row */}
-            <h2
-              className="font-heading text-dark mb-6"
-              style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
-            >
-              ASSETS CREATED
-            </h2>
-            <div className="grid grid-cols-3 gap-3 mb-12 items-start">
-              {project.images[1] && (
-                <div className="relative overflow-hidden" style={{ aspectRatio: "1/1" }}>
-                  <Image src={project.images[1].src} alt={project.images[1].alt} fill className="object-cover" sizes="33vw" />
-                </div>
-              )}
-              {project.images[2] && (
-                <div className="relative overflow-hidden" style={{ aspectRatio: "9/16" }}>
-                  <Image src={project.images[2].src} alt={project.images[2].alt} fill className="object-cover" sizes="33vw" />
-                </div>
-              )}
-              {project.images[3] && (
-                <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
-                  <Image src={project.images[3].src} alt={project.images[3].alt} fill className="object-cover" sizes="33vw" />
-                </div>
-              )}
-            </div>
-
-            {/* SUPPLEMENTARY QUIZ */}
-            {project.images[4] && (
+            {/* SUPPLEMENTARY — if images[4] and images[5] both exist, show side-by-side */}
+            {project.supplementaryLabel && project.images[4] && (
               <>
                 <h2
                   className="font-heading text-dark mb-6"
                   style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
                 >
-                  SUPPLEMENTARY QUIZ
+                  {project.supplementaryLabel}
                 </h2>
-                <div className="relative w-full overflow-hidden mb-12" style={{ aspectRatio: "16/9" }}>
-                  <Image src={project.images[4].src} alt={project.images[4].alt} fill className="object-cover" sizes="100vw" />
-                </div>
+                {project.images[5] ? (
+                  /* Side-by-side, equal height */
+                  <div className="flex gap-4 items-stretch mb-12">
+                    <div className="flex-1 relative overflow-hidden" style={{ minHeight: 0 }}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={project.images[4].src} alt={project.images[4].alt} className="w-full h-full object-contain block" style={{ maxHeight: 700 }} />
+                    </div>
+                    <div className="flex-1 relative overflow-hidden" style={{ minHeight: 0 }}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={project.images[5].src} alt={project.images[5].alt} className="w-full h-full object-contain block" style={{ maxHeight: 700 }} />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="relative w-full overflow-hidden mb-12" style={{ aspectRatio: "16/9" }}>
+                    <Image src={project.images[4].src} alt={project.images[4].alt} fill className="object-cover" sizes="100vw" />
+                  </div>
+                )}
               </>
             )}
 
-            {/* LANDING PAGE */}
-            {project.images[5] && (
+            {/* LANDING PAGE — standalone only if no supplementaryLabel (no images[5] pairing) */}
+            {!project.supplementaryLabel && project.images[5] && (
               <>
                 <h2
                   className="font-heading text-dark mb-6"
@@ -159,47 +236,6 @@ export default function CaseStudyClient({
           </div>
         </motion.section>
       )}
-
-      {/* Process */}
-      <section className="py-16 px-6 md:px-10 border-t border-blue/10">
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            variants={reveal}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="font-heading text-dark mb-12"
-            style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
-          >
-            PROCESS
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {steps.map((step, i) => (
-              <motion.div
-                key={step.num}
-                variants={reveal}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <span
-                  className="font-heading text-red block mb-3"
-                  style={{ fontSize: "3rem" }}
-                >
-                  {step.num}
-                </span>
-                <h3 className="font-heading text-dark text-2xl mb-3">
-                  {step.title.toUpperCase()}
-                </h3>
-                <p className="font-body text-dark/70 leading-relaxed">
-                  {step.body}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Next project */}
       <Link

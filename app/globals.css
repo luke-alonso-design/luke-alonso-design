@@ -48,6 +48,10 @@ body {
   height: 24px;
 }
 
+.cursor-dot.cream {
+  background: var(--color-cream);
+}
+
 /* Marquee */
 @keyframes marquee {
   0% { transform: translateX(0); }

@@ -21,16 +21,24 @@ export default function CustomCursor() {
 
     const addHover = () => dot.classList.add("hovering");
     const removeHover = () => dot.classList.remove("hovering");
+    const addCream = () => dot.classList.add("cream");
+    const removeCream = () => dot.classList.remove("cream");
 
     document.addEventListener("mousemove", move);
 
     const targets = () =>
       document.querySelectorAll("a, button, .project-card, [data-cursor]");
+    const creamTargets = () =>
+      document.querySelectorAll("[data-cursor-cream]");
 
     const attachHover = () => {
       targets().forEach((el) => {
         el.addEventListener("mouseenter", addHover);
         el.addEventListener("mouseleave", removeHover);
+      });
+      creamTargets().forEach((el) => {
+        el.addEventListener("mouseenter", addCream);
+        el.addEventListener("mouseleave", removeCream);
       });
     };
 
