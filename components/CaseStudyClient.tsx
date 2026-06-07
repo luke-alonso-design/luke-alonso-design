@@ -157,36 +157,34 @@ export default function CaseStudyClient({
             <p className="font-subtitle italic text-dark/50 text-sm uppercase tracking-widest mb-4">Ads &amp; Social</p>
 
             {/* Grid: Square | Vertical | Horizontal + Email (right, top-aligned) / Quiz (under Horizontal) */}
-            <div
-              className="mb-10"
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr 2fr auto",
-                gridTemplateRows: "auto auto",
-                columnGap: "0.75rem",
-                rowGap: "0.3rem",
-                maxWidth: "80%",
-              }}
-            >
-              {/* Square — spans both rows */}
-              <div className="relative overflow-hidden" style={{ gridColumn: 1, gridRow: "1 / 3", aspectRatio: "1/1" }}>
-                <Image src="/campaigns/fatherhood-101/square.jpg" alt="Square" fill className="object-cover" sizes="20vw" />
+            {/* Outer flex: [Square] [Vertical] [right-block] */}
+            <div className="flex gap-3 mb-10 items-start" style={{ maxWidth: "80%" }}>
+              {/* Square */}
+              <div className="relative overflow-hidden flex-shrink-0" style={{ width: "18%", aspectRatio: "1/1" }}>
+                <Image src="/campaigns/fatherhood-101/square.jpg" alt="Square" fill className="object-cover" sizes="15vw" />
               </div>
-              {/* Vertical — spans both rows */}
-              <div className="relative overflow-hidden" style={{ gridColumn: 2, gridRow: "1 / 3", aspectRatio: "9/16" }}>
-                <Image src="/campaigns/fatherhood-101/vertical.jpg" alt="Vertical" fill className="object-cover" sizes="20vw" />
+              {/* Vertical */}
+              <div className="relative overflow-hidden flex-shrink-0" style={{ width: "18%", aspectRatio: "9/16" }}>
+                <Image src="/campaigns/fatherhood-101/vertical.jpg" alt="Vertical" fill className="object-cover" sizes="15vw" />
               </div>
-              {/* Horizontal — row 1, col 3 */}
-              <div className="relative overflow-hidden" style={{ gridColumn: 3, gridRow: 1, aspectRatio: "16/9" }}>
-                <Image src="/campaigns/fatherhood-101/horizontal.jpg" alt="Horizontal" fill className="object-cover" sizes="30vw" />
-              </div>
-              {/* Email — spans both rows in col 4, top of Horizontal to bottom of Quiz */}
-              <div style={{ gridColumn: 4, gridRow: "1 / 3", width: 90, alignSelf: "stretch", position: "relative" }}>
-                <Image src="/campaigns/fatherhood-101/email.jpg" alt="Email Design" fill className="object-contain" style={{ objectPosition: "top" }} sizes="90px" />
-              </div>
-              {/* Quiz — row 2, col 3, same width as Horizontal */}
-              <div className="relative overflow-hidden" style={{ gridColumn: 3, gridRow: 2, aspectRatio: "16/9" }}>
-                <Image src="/campaigns/fatherhood-101/quiz.jpg" alt="Quiz" fill className="object-cover" sizes="30vw" />
+              {/* Right block: [Horizontal over Quiz] + [Email stretching full height] */}
+              <div className="flex gap-3 flex-1 items-stretch">
+                {/* Left col: Horizontal stacked above Quiz */}
+                <div className="flex flex-col flex-1" style={{ gap: "0.3rem" }}>
+                  <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
+                    <Image src="/campaigns/fatherhood-101/horizontal.jpg" alt="Horizontal" fill className="object-cover" sizes="30vw" />
+                  </div>
+                  <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
+                    <Image src="/campaigns/fatherhood-101/quiz.jpg" alt="Quiz" fill className="object-cover" sizes="30vw" />
+                  </div>
+                </div>
+                {/* Email — stretches full height of horizontal + gap + quiz */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/campaigns/fatherhood-101/email.jpg"
+                  alt="Email Design"
+                  style={{ display: "block", height: "100%", width: "auto", objectFit: "contain", alignSelf: "stretch" }}
+                />
               </div>
             </div>
 
