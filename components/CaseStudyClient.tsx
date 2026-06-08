@@ -167,10 +167,10 @@ export default function CaseStudyClient({
               <div className="relative overflow-hidden flex-shrink-0" style={{ width: "18%", aspectRatio: "9/16" }}>
                 <Image src="/campaigns/fatherhood-101/vertical.jpg" alt="Vertical" fill className="object-cover" sizes="15vw" />
               </div>
-              {/* Right block: [Horizontal over Quiz] + [Email stretching full height] */}
-              <div className="flex flex-1" style={{ gap: "0.75rem", alignItems: "stretch" }}>
-                {/* Left col: Horizontal stacked above Quiz — drives the container height */}
-                <div className="flex flex-col flex-1" style={{ gap: "0.3rem" }}>
+              {/* Right block: Horizontal+Quiz on left, Email absolutely pinned to right */}
+              <div className="flex-1 relative" style={{ paddingRight: "13%" }}>
+                {/* Horizontal stacked above Quiz */}
+                <div className="flex flex-col" style={{ gap: "0.3rem" }}>
                   <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
                     <Image src="/campaigns/fatherhood-101/horizontal.jpg" alt="Horizontal" fill className="object-cover" sizes="30vw" />
                   </div>
@@ -178,9 +178,10 @@ export default function CaseStudyClient({
                     <Image src="/campaigns/fatherhood-101/quiz.jpg" alt="Quiz" fill className="object-cover" sizes="30vw" />
                   </div>
                 </div>
-                {/* Email — wrapper stretches to left col height, aspect-ratio sets width automatically */}
-                <div className="relative flex-shrink-0" style={{ alignSelf: "stretch", aspectRatio: "600/2011" }}>
-                  <Image src="/campaigns/fatherhood-101/email.jpg" alt="Email Design" fill className="object-contain" style={{ objectPosition: "top" }} sizes="10vw" />
+                {/* Email — absolutely positioned right, top-to-bottom of the stacked images */}
+                <div className="absolute top-0 bottom-0 right-0" style={{ width: "12%" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/campaigns/fatherhood-101/email.jpg" alt="Email Design" style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "top", display: "block" }} />
                 </div>
               </div>
             </div>
