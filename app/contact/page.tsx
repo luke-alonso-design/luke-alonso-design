@@ -94,10 +94,10 @@ export default function ContactPage() {
           className="mt-20 pt-10 border-t border-cream/20 flex flex-col md:flex-row gap-8 md:items-center"
         >
           <a
-            href="mailto:hello@alexnova.com"
+            href="mailto:luke.a.alonso@gmail.com"
             className="font-body text-cream/70 hover:text-cream transition-colors text-sm"
           >
-            hello@alexnova.com
+            luke.a.alonso@gmail.com
           </a>
           <div className="flex gap-8">
             {["Dribbble", "Behance", "LinkedIn"].map((s) => (
